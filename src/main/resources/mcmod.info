@@ -1,0 +1,14 @@
+[{
+  "modid": "monocle",
+  "name": "Monocle",
+  "description": "Client side enhancements for the Packet Loss Gaming Minecraft server.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Dark_Arc"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}]
