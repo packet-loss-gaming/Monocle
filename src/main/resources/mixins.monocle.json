@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "package": "gg.packetloss.monocle.coremod.asm.mixin",
+  "mixins": [
+    "MixinItemModelMesher",
+    "MixinModelLoader"
+  ],
+  "refmap": "monocle.mixin.refmap.json"
+}
