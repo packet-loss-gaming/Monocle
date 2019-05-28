@@ -25,6 +25,13 @@ public class CustomItemTexturing {
 
   private void registerTextureOverride(String customItemName) {
     modelResourceLocationMap.put(customItemName, new ResourceLocation("monocle", "item/" + customItemName));
+
+    if (customItemName.contains("bow")) {
+      for (int i = 0; i < 3; ++i) {
+        String animationName = customItemName + "_pulling_" + i;
+        modelResourceLocationMap.put(animationName, new ResourceLocation("monocle", "item/" + animationName));
+      }
+    }
   }
 
   public ResourceLocation getOverridenModel(String customItemName) {

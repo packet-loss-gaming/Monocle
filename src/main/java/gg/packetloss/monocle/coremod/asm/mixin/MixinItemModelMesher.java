@@ -1,5 +1,6 @@
 package gg.packetloss.monocle.coremod.asm.mixin;
 
+import gg.packetloss.monocle.coremod.util.CustomItemMatcher;
 import gg.packetloss.monocle.item.CustomItemTexturing;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.ItemModelMesher;
@@ -33,11 +34,10 @@ public abstract class MixinItemModelMesher {
 
   @Overwrite
   public IBakedModel getItemModel(ItemStack stack) {
-    Pattern r = Pattern.compile("§.(.+)");
-    Matcher m = r.matcher(stack.getDisplayName());
+    CustomItemMatcher matcher = new CustomItemMatcher(stack);
 
-    if (m.find()) {
-      String snakeCaseName = m.group(1).toLowerCase().replaceAll(" ", "_");
+    if (matcher.matched()) {
+      String snakeCaseName = matcher.getSnakeCaseName();
 
       ResourceLocation overridenLoc = CustomItemTexturing.inst().getOverridenModel(snakeCaseName);
       if (overridenLoc != null) {
