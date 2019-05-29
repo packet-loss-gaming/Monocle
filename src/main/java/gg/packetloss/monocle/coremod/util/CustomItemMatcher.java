@@ -1,5 +1,6 @@
 package gg.packetloss.monocle.coremod.util;
 
+import gg.packetloss.monocle.item.CustomItemNameSanitizer;
 import net.minecraft.item.ItemStack;
 import org.apache.commons.lang3.Validate;
 
@@ -18,7 +19,7 @@ public class CustomItemMatcher {
         matched = matcher.find();
 
         if (matched()) {
-            snakeCaseName = matcher.group(1).toLowerCase().replaceAll(" ", "_");
+            snakeCaseName = CustomItemNameSanitizer.clean(matcher.group(1).toLowerCase().replaceAll(" ", "_"));
         } else {
             snakeCaseName = null;
         }

@@ -24,6 +24,8 @@ public class CustomItemTexturing {
   }
 
   private void registerTextureOverride(String customItemName) {
+    customItemName = CustomItemNameSanitizer.clean(customItemName);
+
     modelResourceLocationMap.put(customItemName, new ResourceLocation("monocle", "item/" + customItemName));
 
     if (customItemName.contains("bow")) {
