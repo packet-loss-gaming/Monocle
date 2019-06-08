@@ -4,20 +4,17 @@ import gg.packetloss.monocle.coremod.util.CustomItemMatcher;
 import gg.packetloss.monocle.item.CustomItemTexturing;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.ItemModelMesher;
-import net.minecraft.client.resources.model.IBakedModel;
-import net.minecraft.client.resources.model.ModelManager;
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.model.IBakedModel;
+import net.minecraft.client.renderer.block.model.ModelManager;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.ISmartItemModel;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Mixin(value = ItemModelMesher.class)
 public abstract class MixinItemModelMesher {
@@ -53,6 +50,7 @@ public abstract class MixinItemModelMesher {
     // Original method logic follows, @Inject wasn't working properly for some reason.
     Item item = stack.getItem();
     IBakedModel ibakedmodel = this.getItemModel(item, this.getMetadata(stack));
+
     if (ibakedmodel == null) {
       ItemMeshDefinition itemmeshdefinition = this.shapers.get(item);
       if (itemmeshdefinition != null) {
@@ -60,14 +58,11 @@ public abstract class MixinItemModelMesher {
       }
     }
 
-    if (ibakedmodel instanceof ISmartItemModel) {
-      ibakedmodel = ((ISmartItemModel)ibakedmodel).handleItemState(stack);
-    }
-
     if (ibakedmodel == null) {
       ibakedmodel = this.modelManager.getMissingModel();
     }
 
     return ibakedmodel;
+
   }
 }

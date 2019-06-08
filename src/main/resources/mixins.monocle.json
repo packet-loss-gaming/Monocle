@@ -3,8 +3,7 @@
   "package": "gg.packetloss.monocle.coremod.asm.mixin",
   "mixins": [
     "MixinItemModelMesher",
-    "MixinModelLoader",
-    "MixinRenderItem"
+    "MixinModelLoader"
   ],
   "refmap": "monocle.mixin.refmap.json"
 }
