@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.MixinEnvironment;
 
 import java.util.Map;
 
-@IFMLLoadingPlugin.MCVersion(value = "1.9.4")
+@IFMLLoadingPlugin.MCVersion(value = "1.12.2")
 public class MonocleCoreMod implements IFMLLoadingPlugin {
   public MonocleCoreMod() {
     MixinBootstrap.init();
